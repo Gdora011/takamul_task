@@ -1,0 +1,31 @@
+package com.example.task;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
+
+    MyRecyclerViewAdapter adapter;
+    String response;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Intent i = new Intent(MainActivity.this, ViewQuestion.class);
+        startActivity(i);
+        }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+}
